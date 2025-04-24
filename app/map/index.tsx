@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import Mapbox, { MapView } from "@rnmapbox/maps";
 import Constants from "expo-constants";
@@ -9,9 +9,7 @@ const accessToken =
 Mapbox.setAccessToken(accessToken);
 
 const MapScreen = () => {
-  return (
-    <MapView style={styles.map} styleURL="mapbox://styles/mapbox/streets-v11" />
-  );
+  return <MapView style={styles.map} />;
 };
 
 export default MapScreen;
