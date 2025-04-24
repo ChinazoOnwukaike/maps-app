@@ -2,12 +2,9 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import Mapbox, { MapView } from "@rnmapbox/maps";
 import Constants from "expo-constants";
-// import { EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN } from "@env";
 
 const accessToken =
   Constants.expoConfig?.extra?.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN;
-
-console.log("Mapbox token", Constants.expoConfig?.extra);
 
 Mapbox.setAccessToken(accessToken);
 
