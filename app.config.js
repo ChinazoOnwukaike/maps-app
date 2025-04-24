@@ -45,8 +45,19 @@ export default {
         {
           RNMapboxMapsDownloadToken:
             process.env.EXPO_PUBLIC_MAPBOX_MOBILE_ACCESS_TOKEN,
+          RNMapboxMapsVersion: "11.0.0",
+        },
+      ],
+      [
+        "expo-location",
+        {
+          locationWhenInUsePermission: "Show current location on map.",
         },
       ],
     ],
+    extra: {
+      EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN:
+        process.env.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN,
+    },
   },
 };

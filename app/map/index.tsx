@@ -1,31 +1,37 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import MapView from "react-native-maps";
+import Mapbox, { MapView } from "@rnmapbox/maps";
+import Constants from "expo-constants";
+// import { EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN } from "@env";
+
+const accessToken =
+  Constants.expoConfig?.extra?.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN;
+
+console.log("Mapbox token", Constants.expoConfig?.extra);
+
+Mapbox.setAccessToken(accessToken);
 
 const MapScreen = () => {
   return (
-    <View style={styles.container}>
-      <MapView
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-        style={styles.map}
-      />
-    </View>
+    <MapView style={styles.map} styleURL="mapbox://styles/mapbox/streets-v11" />
   );
 };
 
 export default MapScreen;
 
 const styles = StyleSheet.create({
-  container: {
+  page: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+  },
+  container: {
+    height: 300,
+    width: 300,
+    backgroundColor: "tomato",
   },
   map: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
   },
 });
