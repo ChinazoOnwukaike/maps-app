@@ -1,7 +1,14 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
-import Mapbox, { MapView } from "@rnmapbox/maps";
+import Mapbox, {
+  Images,
+  MapView,
+  ShapeSource,
+  SymbolLayer,
+} from "@rnmapbox/maps";
 import Constants from "expo-constants";
+import CustomMap from "@/presentation/components/CustomMap";
+import purplePin from "../../assets/images/pin-purple.svg";
 
 const accessToken =
   Constants.expoConfig?.extra?.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -9,7 +16,21 @@ const accessToken =
 Mapbox.setAccessToken(accessToken);
 
 const MapScreen = () => {
-  return <MapView style={styles.map} />;
+  return (
+    <View style={styles.page}>
+      <CustomMap>
+        <ShapeSource>
+          <SymbolLayer
+            id="pins"
+            minZoomLevel={1}
+            style={{ iconImage: "pin" }}
+          />
+          <Images images={{ purplePin }} />
+        </ShapeSource>
+      </CustomMap>
+      {/* <CustomMap style={{ height: "50%" }} /> */}
+    </View>
+  );
 };
 
 export default MapScreen;
@@ -21,11 +42,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF",
   },
-  container: {
-    height: 300,
-    width: 300,
-    backgroundColor: "tomato",
-  },
+
   map: {
     flex: 1,
   },
