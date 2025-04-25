@@ -24,7 +24,6 @@ const coords = [
 
 const MapScreen = () => {
   const points = coords.map((coord) => point([coord.lng, coord.lat]));
-  console.log(points);
   return (
     <View style={styles.page}>
       <CustomMap>
