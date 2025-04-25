@@ -16,13 +16,19 @@ const CustomMap = ({
   return (
     <View {...rest} style={styles.container}>
       <MapView style={styles.map}>
-        <Camera followUserLocation maxZoomLevel={4} minZoomLevel={5} />
-        <LocationPuck />
+        <Camera
+          centerCoordinate={[-87.6500523, 41.850033]}
+          minZoomLevel={2}
+          maxZoomLevel={12}
+        />
+        {/* <LocationPuck />s */}
         {children}
       </MapView>
     </View>
   );
 };
+
+// Must implement our own zoom btn controls using native gestures, uses the zoomEnabled prop.
 
 export default CustomMap;
 

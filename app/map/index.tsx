@@ -3,32 +3,44 @@ import React from "react";
 import Mapbox, {
   Images,
   MapView,
+  MarkerView,
   ShapeSource,
   SymbolLayer,
 } from "@rnmapbox/maps";
 import Constants from "expo-constants";
 import CustomMap from "@/presentation/components/CustomMap";
-import purplePin from "../../assets/images/pin-purple.svg";
+import purplePin from "../../assets/images/pin-purple.png";
+import { featureCollection, point } from "@turf/helpers";
 
 const accessToken =
   Constants.expoConfig?.extra?.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 Mapbox.setAccessToken(accessToken);
 
+const coords = [
+  { lng: -122.431297, lat: 37.773972 },
+  { lat: 37.335278, lng: -121.891944 },
+]; //latlng are flipped for some unknown reason!
+
 const MapScreen = () => {
+  const points = coords.map((coord) => point([coord.lng, coord.lat]));
+  console.log(points);
   return (
     <View style={styles.page}>
       <CustomMap>
-        <ShapeSource>
+        <ShapeSource id="pins" shape={featureCollection(points)}>
           <SymbolLayer
-            id="pins"
+            id="pins-icon"
             minZoomLevel={1}
-            style={{ iconImage: "pin" }}
+            style={{
+              iconImage: "purplePin",
+              iconAllowOverlap: true,
+              iconSize: 1,
+            }}
           />
           <Images images={{ purplePin }} />
         </ShapeSource>
       </CustomMap>
-      {/* <CustomMap style={{ height: "50%" }} /> */}
     </View>
   );
 };

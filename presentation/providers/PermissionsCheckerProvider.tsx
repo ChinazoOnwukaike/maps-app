@@ -1,5 +1,5 @@
 import { PropsWithChildren, useEffect } from "react";
-import { View, Text, AppState } from "react-native";
+import { AppState } from "react-native";
 import { usePermissionsStore } from "../store/usePermissions";
 import { PermissionStatus } from "@/infrastructure/interfaces/location";
 import { router } from "expo-router";
@@ -17,7 +17,7 @@ const PermissionsCheckerProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     checkLocationPermission();
-  }, []);
+  }, [checkLocationPermission]);
 
   useEffect(() => {
     const susbcription = AppState.addEventListener("change", (nextAppState) => {
@@ -29,7 +29,7 @@ const PermissionsCheckerProvider = ({ children }: PropsWithChildren) => {
     return () => {
       susbcription.remove();
     };
-  }, []);
+  }, [checkLocationPermission]);
 
   return <>{children}</>;
 };

@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import { ThemedText } from "@/presentation/components/shared/ThemedText";
 import { usePermissionsStore } from "@/presentation/store/usePermissions";

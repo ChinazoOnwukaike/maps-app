@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  Pressable,
-  StyleSheet,
-  PressableProps,
-} from "react-native";
+import { Text, Pressable, StyleSheet, PressableProps } from "react-native";
 import React from "react";
 
 type ThemedPressableProps = PressableProps & {
